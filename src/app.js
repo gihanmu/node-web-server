@@ -3,6 +3,8 @@ const hbs = require('hbs');
 const log = console.log;
 const path = require('path');
 const httpRequest = require('./utils/request');
+const port = process.env.PORT || 3000;
+
 const app = express();
 
 const API_KEY_OPEN_WEATHER = '10d096a2339f19ff4e4262d369461a2f';
@@ -22,8 +24,8 @@ hbs.registerPartials(partialsDirectory);
 log(publicDirectory);
 app.use(express.static(publicDirectory));
 
-app.listen('3000', () => {
-    log('Listening on port 3000');
+app.listen(port, () => {
+    log(`Listening on port ${port}`);
 });
 
 app.get('', (req, res) => {
